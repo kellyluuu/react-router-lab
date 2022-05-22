@@ -15,9 +15,7 @@ export default function Stock (){
         setStockData(result)
     }
     //useEffect to run getStockData when components mounts
-    useEffect(()=>{
-        getStockData()
-    },[])
+    useEffect(()=>{getStockData()},[])
 
     // function when data is fetched
     const loaded = ()=>{
@@ -25,23 +23,27 @@ export default function Stock (){
             <div>
             <h1>{stockData.name}</h1>
             <h3>{stockData.symbol}</h3>
-            <table>
-  <tr>
-    <th>Price</th>
-    <th>Change</th>
-    <th>High</th>
-    <th>Low</th>
-    <th>Open</th>
-  </tr>
-  <tr>
-    <td>${stockData.lastPrice}</td>
-    <td>{stockData.change.toFixed(4)}</td>
-    <td>${stockData.high}</td>
-    <td>${stockData.low}</td>
-    <td>${stockData.open}</td>
-  </tr>
-</table>
-            </div>
+            <table className="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Price</th>
+                        <th scope="col">Change</th>
+                        <th scope="col">High</th>
+                        <th scope="col">Low</th>
+                        <th scope="col">Open</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr className="table-secondary">
+                        <td>${stockData.lastPrice}</td>
+                        <td>{stockData.change.toFixed(4)}</td>
+                        <td>${stockData.high}</td>
+                        <td>${stockData.low}</td>
+                        <td>${stockData.open}</td>
+                    </tr>   
+                </tbody>
+            </table>
+        </div>
         )
     }
 

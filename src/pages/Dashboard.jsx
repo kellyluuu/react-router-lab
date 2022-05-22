@@ -4,11 +4,24 @@ import {Link} from "react-router-dom"
 export default function Dashboard (){
     return (
         <div className="dashboard">
-        {stocks.map(({name,symbol},id)=>
-        <Link key={id} to={`/stocks/${symbol}`}>
-            <h2>{name}</h2>
-        </Link>
+            <table className="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Company Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Change</th>
+                </tr>
+                </thead>
+                <tbody>
+                {stocks.map(({name, symbol, lastPrice, change},id)=>
+                <tr key={id} className={change>0 ? "table-success" : "table-danger"}>
+                    <th key={name.id}><Link key={id} to={`/stocks/${symbol}`}>{name} - {symbol} </Link></th>
+                    <td >${lastPrice}</td>
+                    <td >{change}</td>
+                </tr>
         )}
+                </tbody>
+            </table>
     </div>
     )
 }
